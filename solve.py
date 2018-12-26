@@ -56,8 +56,10 @@ class Solver():
         return grid
 
     def print_grid(self, grid):
+        output = ''
         for x in range(9):
-            print(''.join([str(x) for x in grid[x]]))
+            output += ''.join([str(x) for x in grid[x]]) + "\n"
+        print(output)
 
     def hash_grid(self, grid):
         total = 0
