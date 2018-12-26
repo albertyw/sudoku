@@ -106,27 +106,23 @@ class Solver():
 
     def compute(self, grid, cell_x, cell_y):
         cell_possibilities = copy.deepcopy(possibilities)
-        # print('compute')
         # remove row
         x = cell_x
         for y in range(9):
             if grid[x][y] not in cell_possibilities:
                 continue
-            # print(grid[x][y])
             cell_possibilities.remove(grid[x][y])
         # remove column
         y = cell_y
         for x in range(9):
             if grid[x][y] not in cell_possibilities:
                 continue
-            # print(grid[x][y])
             cell_possibilities.remove(grid[x][y])
         # remove square
         for x in squares[cell_x]:
             for y in squares[cell_y]:
                 if grid[x][y] not in cell_possibilities:
                     continue
-                # print(grid[x][y])
                 cell_possibilities.remove(grid[x][y])
         return cell_possibilities
 
@@ -137,7 +133,6 @@ class Solver():
             reset = False
             for x in range(9):
                 for y in range(9):
-                    # print_grid(grid)
                     if grid[x][y] != 'x':
                         continue
                     cell_possibilities = self.compute(grid, x, y)
@@ -154,8 +149,6 @@ class Solver():
                 continue
             if not found:
                 grid = self.add_try(grid)
-                # print_grid(grid)
-                # raise Exception("cannot advance")
         self.print_grid(grid)
 
 
