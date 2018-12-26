@@ -34,12 +34,12 @@ squares = {
     7: range(6, 9),
     8: range(6, 9),
 }
-tries = []
 
 
 class Solver():
     def __init__(self, matrix):
         self.question = self.parse_matrix(matrix)
+        self.tries = []
 
     def parse_matrix(self, matrix):
         grid = []
@@ -59,7 +59,7 @@ class Solver():
         output = ''
         for x in range(9):
             output += ''.join([str(x) for x in grid[x]]) + "\n"
-        print(output)
+        print(output.strip())
 
     def hash_grid(self, grid):
         total = 0
@@ -90,14 +90,13 @@ class Solver():
                     continue
                 new_grid = copy.deepcopy(grid)
                 new_grid[x][y] = possibilities[0]
-                tries.append([grid, orig_try_count])
+                self.tries.append([grid, orig_try_count])
                 return new_grid
         raise RuntimeError("Cannot add_try")
 
     def revert_try(self):
-        global tries
-        old_grid, try_count = tries[0]
-        tries = tries[1:]
+        old_grid, try_count = self.tries[0]
+        self.tries = self.tries[1:]
         try:
             new_grid = self.add_try(old_grid, try_count=try_count+1)
             return new_grid
