@@ -55,11 +55,11 @@ class Solver():
                 row = []
         return grid
 
-    def print_grid(self, grid):
+    def matrix(self, grid):
         output = ''
         for x in range(9):
             output += ''.join([str(x) for x in grid[x]]) + "\n"
-        print(output.strip())
+        return output.strip()
 
     def hash_grid(self, grid):
         total = 0
@@ -148,7 +148,7 @@ class Solver():
                 continue
             if not found:
                 grid = self.add_try(grid)
-        self.print_grid(grid)
+        print(self.matrix(grid))
 
 
 Solver(matrix).search()
