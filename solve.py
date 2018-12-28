@@ -1,27 +1,5 @@
 import copy
 
-matrix = """
-xx3x1xxxx
-4xx56x2x9
-7xxxx81xx
-x8x1xxxx3
-xx18x94xx
-3xxxx4x8x
-xx59xxxx7
-2x9x53xx4
-xxxx4x9xx
-"""
-answer = """
-953412678
-418567239
-726398145
-684125793
-571839462
-392674581
-145986327
-269753814
-837241956
-"""
 possibilities = list(range(1, 10))
 squares = {
     0: range(0, 3),
@@ -148,7 +126,4 @@ class Solver():
                 continue
             if not found:
                 grid = self.add_try(grid)
-        print(self.matrix(grid))
-
-
-Solver(matrix).search()
+        return self.matrix(grid)
