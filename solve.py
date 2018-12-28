@@ -22,7 +22,7 @@ answer = """
 269753814
 837241956
 """
-possibilities = range(1, 10)
+possibilities = list(range(1, 10))
 squares = {
     0: range(0, 3),
     1: range(0, 3),
