@@ -2,6 +2,7 @@ import unittest
 
 import solve
 
+# Test Cases come from http://sudopedia.enjoysudoku.com/Valid_Test_Cases.html
 
 TEST_CASES = [
     {
@@ -23,6 +24,11 @@ TEST_CASES = [
         "name": "hidden_singles",
         "problem": "xx2x3xxx8xxxxx8xxxx31x2xxxxx6xx5x27xx1xxxxx5x2x4x6xx31xxxx8x6x5xxxxxxx13xx531x4xx",
         "solution": "672435198549178362831629547368951274917243856254867931193784625486592713725316489",
+    },
+    {
+        "name": "generated",
+        "problem": "xx3x1xxxx4xx56x2x97xxxx81xxx8x1xxxx3xx18x94xx3xxxx4x8xxx59xxxx72x9x53xx4xxxx4x9xx",
+        "solution": "953412678418567239726398145684125793571839462392674581145986327269753814837241956",
     },
 ]
 
