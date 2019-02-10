@@ -76,7 +76,7 @@ class Solver():
         old_grid, try_count = self.tries[0]
         self.tries = self.tries[1:]
         try:
-            new_grid = self.add_try(old_grid, try_count=try_count+1)
+            new_grid = self.add_try(old_grid, try_count=try_count + 1)
             return new_grid
         except RuntimeError:
             return self.revert_try()
