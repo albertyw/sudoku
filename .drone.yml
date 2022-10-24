@@ -8,4 +8,5 @@ steps:
     commands:
       - pip install -r requirements-test.txt
       - flake8
-      - python -m unittest
+      - coverage run -m unittest
+      - coverage report -m
