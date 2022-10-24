@@ -6,6 +6,6 @@ steps:
   - name: Test Python
     image: python:3.10
     commands:
-      - pip install -r requirements.txt
+      - pip install -r requirements-test.txt
       - flake8
       - python -m unittest
