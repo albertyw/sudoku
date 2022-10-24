@@ -6,8 +6,16 @@ steps:
   - name: Test Python
     image: python:3.10
     commands:
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > "${HOME}/bin/cc-test-reporter"
+      - chmod +x "${HOME}/bin/cc-test-reporter"
       - pip install -r requirements-test.txt
       - flake8
       - mypy .
+      - cc-test-reporter before-build
       - coverage run -m unittest
+      - exitcode="$?"
       - coverage report -m
+      - coverage xml
+      - cc-test-reporter after-build --exit-code "$exitcode"
+    environment:
+      CC_TEST_REPORTER_ID: 29f24ef4b5adf9c2e01216cbbc345b728b2a845d57e10c4e725ba57bc519518e
