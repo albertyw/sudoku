@@ -1,4 +1,6 @@
 Sudoku Solver
 =============
 
-[![Codeship Status for albertyw/sudoku](https://app.codeship.com/projects/c6c8d7d0-0f16-0137-1425-0e9f77c2b054/status?branch=master)](https://app.codeship.com/projects/326957)
+[![Build Status](https://drone.albertyw.com/api/badges/albertyw/sudoku/status.svg)](https://drone.albertyw.com/albertyw/sudoku)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8d40e6c001733f2987a7/maintainability)](https://codeclimate.com/github/albertyw/sudoku/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8d40e6c001733f2987a7/test_coverage)](https://codeclimate.com/github/albertyw/sudoku/test_coverage)
