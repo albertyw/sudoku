@@ -48,3 +48,23 @@ def generate_test_func(test_case):
 for test_case in TEST_CASES:
     test_func = generate_test_func(test_case)
     setattr(TestSolve, 'test_%s' % test_case["name"], test_func)
+
+
+class TestEdgeCases(unittest.TestCase):
+    def test_empty_grid_raises_value_error(self):
+        """An empty string should raise ValueError during initialization."""
+        with self.assertRaises(ValueError):
+            solve.Solver("")
+
+    def test_invalid_characters_raise_value_error(self):
+        """Non‑digit, non‑'x' characters should raise ValueError during parsing."""
+        problem = "12345678a" + "x" * 72  # one invalid character
+        with self.assertRaises(ValueError):
+            solve.Solver(problem)
+
+    def test_incorrect_row_length_raises_value_error(self):
+        """Rows that are not 9 characters long should raise ValueError during initialization."""
+        # 8 digits in the first row, then 9 digits each for the rest
+        problem = "123456789" + "x" * 73
+        with self.assertRaises(ValueError):
+            solve.Solver(problem)

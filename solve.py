@@ -16,6 +16,9 @@ squares = {
 
 class Solver():
     def __init__(self, matrix):
+        # Input validation: reject empty or whitespace‑only strings
+        if not matrix or matrix.strip() == '':
+            raise ValueError("Input matrix cannot be empty")
         self.question = self.parse_matrix(matrix)
         self.tries = []
 
@@ -25,12 +28,25 @@ class Solver():
         for i in matrix:
             if not i.strip():
                 continue
-            if i != 'x':
-                i = int(i)
-            row.append(i)
+            if i == 'x':
+                row.append('x')
+            elif i.isdigit() and i != '0':
+                row.append(int(i))
+            else:
+                raise ValueError(f"Invalid character '{i}' in input")
             if len(row) == 9:
                 grid.append(row)
                 row = []
+        # Validate that we have exactly 9 rows
+        if len(grid) != 9:
+            raise ValueError(f"Incorrect number of rows: expected 9, got {len(grid)}")
+        # Validate that each row has exactly 9 cells
+        for r in grid:
+            if len(r) != 9:
+                raise ValueError(f"Row length incorrect: expected 9, got {len(r)}")
+        # Ensure no leftover incomplete row
+        if row:
+            raise ValueError("Incomplete row at end of input")
         return grid
 
     def matrix(self, grid):
