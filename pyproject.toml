@@ -1,0 +1,21 @@
+[project]
+name = "sudoku"
+authors = [
+    {name = "Albert Wang", email = "git@albertyw.com"},
+]
+description = "Sudoku solver"
+version = "0.0.1"
+
+[project.optional-dependencies]
+test = [
+    # Testing
+    "ruff==0.14.10",          # python linter
+    "coverage==7.13.1",       # test coverage
+
+    # Types
+    "mypy==1.19.1",           # type checking
+]
+
+[tool.ruff]
+lint.select = ["E", "F", "W", "A", "B", "COM", "N", "PLC", "PLE", "PLW"]
+lint.ignore = ["E501"]

@@ -4,18 +4,15 @@ name: test
 
 steps:
   - name: Test Python
-    image: python:3.11
+    image: python:3.14
     commands:
-      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > "${HOME}/bin/cc-test-reporter"
-      - chmod +x "${HOME}/bin/cc-test-reporter"
-      - pip install -r requirements-test.txt
-      - flake8
+      - curl https://qlty.sh | sh
+      - pip install -e .[test]
+      - ruff check .
       - mypy .
-      - cc-test-reporter before-build
       - coverage run -m unittest
-      - exitcode="$?"
       - coverage report -m
-      - coverage xml
-      - cc-test-reporter after-build --exit-code "$exitcode"
+      - coverage lcov -o .coverage.lcov
+      - ~/.qlty/bin/qlty coverage publish .coverage.lcov --override-commit-sha "$DRONE_COMMIT_SHA" --override-branch "$DRONE_BRANCH" --override-build-id "$DRONE_BUILD_NUMBER"
     environment:
-      CC_TEST_REPORTER_ID: 29f24ef4b5adf9c2e01216cbbc345b728b2a845d57e10c4e725ba57bc519518e
+      QLTY_COVERAGE_TOKEN: qltcp_ewIOe4GWOG8pS5k6
