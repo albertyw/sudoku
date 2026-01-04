@@ -9,9 +9,13 @@ version = "0.0.1"
 [project.optional-dependencies]
 test = [
     # Testing
-    "flake8==3.7.5",        # python linting
+    "ruff==0.14.10",        # python linter
     "coverage==6.5.0",      # test coverage
 
     # Types
     "mypy==0.982",          # type checking
 ]
+
+[tool.ruff]
+lint.select = ["E", "F", "W", "A", "B", "COM", "N", "PLC", "PLE", "PLW"]
+lint.ignore = ["E501"]

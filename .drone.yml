@@ -8,7 +8,7 @@ steps:
     commands:
       - curl https://qlty.sh | sh
       - pip install -e .[test]
-      - flake8
+      - ruff check .
       - mypy .
       - coverage run -m unittest
       - coverage report -m
