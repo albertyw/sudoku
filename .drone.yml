@@ -7,7 +7,7 @@ steps:
     image: python:3.11
     commands:
       - curl https://qlty.sh | sh
-      - pip install -r requirements-test.txt
+      - pip install -e .[test]
       - flake8
       - mypy .
       - coverage run -m unittest
